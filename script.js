@@ -1,12 +1,12 @@
-const popupBtnOpen=document.querySelector('.button__edit');
+const popupBtnOpen=document.querySelector('.profile__edit');
 const popup=document.querySelector('.popup')
-const popupsave=document.querySelector('.button__save')
+const popupsave=document.querySelector('.popup__save')
 const popupclose=document.querySelector('.popup__close')
 
 
 let formElement=document.querySelector('.form')
 let nameInput=document.querySelector('.popup__name')
-let jobInput=document.querySelector('.popup_second-name');
+let jobInput=document.querySelector('.popup__second-name');
 popupBtnOpen.addEventListener('click',openPopup);
 popupsave.addEventListener('click', handleFormSubmit);
 popupsave.addEventListener('click', closePopup);
