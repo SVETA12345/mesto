@@ -1,0 +1,16 @@
+.place__like{
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.place__like:hover{
+    opacity: 0.5;
+}
+
+.place__like:active{
+    background-image: url(../../../images/like_active.svg);
+    opacity: 1;
+}
