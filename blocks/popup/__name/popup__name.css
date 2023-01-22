@@ -1,8 +1,7 @@
 .popup__name{
     width: 358px;
-    height: 27px;
     margin: 0 auto;
-    margin-top: 54px;
+    margin-top: 30px;
     border: 0;
     resize: none;
     display: flex;
@@ -13,11 +12,16 @@
     line-height: 17px;
     color: #000000;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    block-size: 27px;
 }
-
+.popup__name:first-child{
+    margin-top: 36px;
+}
 @media (max-width: 767px){
     .popup__name{
         width: 238px;
-        margin-top: 75px;
+    }
+    .popup__name:first-child{
+        margin-top: 72px;
     }
 }
