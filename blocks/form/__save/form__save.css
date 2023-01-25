@@ -1,4 +1,4 @@
-.popup__save{
+.form__save{
     display: flex;
     width: 358px;
     height: 50px;
@@ -11,15 +11,21 @@
     align-items: center;
     margin-top: 48px;
     cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
-.popup__save:hover{
+.form__save:hover{
     opacity: 0.8;
 }
 
 @media (max-width: 767px){
-    .popup__save{
+    .form__save{
         width: 238px;
         height: 46px;
         margin-top: 45px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }

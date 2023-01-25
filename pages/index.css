@@ -17,7 +17,7 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__second-name/popup__second-name.css);
-@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/form/__save/form__save.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/place/place.css);
