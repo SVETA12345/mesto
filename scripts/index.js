@@ -8,8 +8,8 @@ let job=document.querySelector('.profile__second-name');
 
 let formElement=document.querySelector('.form')
 
-let nameInput=document.querySelector('.popup__name_theme_first')
-let jobInput=document.querySelector('.popup__name_theme_job');
+let nameInput=document.querySelector('.form__name_theme_first')
+let jobInput=document.querySelector('.form__name_theme_job');
 popupBtnOpen.addEventListener('click',openPopup);
 
 formElement.addEventListener('submit', handleFormSubmit);

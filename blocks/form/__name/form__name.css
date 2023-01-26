@@ -1,4 +1,4 @@
-.popup__name{
+.form__name{
     width: 358px;
     margin: 0 auto;
     margin-top: 30px;
@@ -14,14 +14,14 @@
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     block-size: 27px;
 }
-.popup__name:first-child{
+.form__name:first-child{
     margin-top: 39px;
 }
 @media (max-width: 767px){
-    .popup__name{
+    .form__name{
         width: 238px;
     }
-    .popup__name:first-child{
+    .form__name:first-child{
         margin-top: 72px;
     }
 }
