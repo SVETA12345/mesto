@@ -23,54 +23,24 @@
     <button class="profile__add" type="button"></button>
       </section>
       <section class="places">
-        <div class="place">
-          <img alt="Карачаевск" class="place__photo" src="./images/elemet_karachaevo.png">
+
+        <template class="template">
+          <div class="place">
+            <img class="place__photo">
+            <button type="button" class="place__close"></button>
           <div class="place__footer">
-            <h2 class="place__title">Карачаевск</h2>
+            <h2 class="place__title"></h2>
             <button type="button" class="place__like"></button>
           </div>
-        </div>
-        <div class="place">
-          <img alt="Гора Эльбрус" class="place__photo" src="./images/element_elbrus.png">
-          <div class="place__footer">
-            <h2 class="place__title">Гора Эльбрус</h2>
-            <button type="button" class="place__like"></button>
           </div>
-        </div>
-        <div class="place">
-          <img alt="Домбай" class="place__photo" src="./images/element_dombay.png">
-          <div class="place__footer">
-            <h2 class="place__title">Домбай</h2>
-            <button type="button" class="place__like"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img alt="Гора Эльбрус" class="place__photo" src="./images/element_elbrus.png">
-          <div class="place__footer">
-            <h2 class="place__title">Гора Эльбрус</h2>
-            <button type="button" class="place__like"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img alt="Домбай" class="place__photo" src="./images/element_dombay.png">
-          <div class="place__footer">
-            <h2 class="place__title">Домбай</h2>
-            <button type="button" class="place__like"></button>
-          </div>
-        </div>
-        <div class="place">
-          <img alt="Карачаево-Черкесия" class="place__photo" src="./images/elemet_karachaevo.png">
-          <div class="place__footer">
-            <h2 class="place__title">Карачаево-Черкесия</h2>
-            <button type="button" class="place__like"></button>
-          </div>
-        </div>
+        </template>   
+
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_profile_name">
       <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" action="#" method="get" name="forma">
@@ -81,6 +51,17 @@
       <button type="button" class="popup__close"></button>
     </div>
   </div>
+  <div class="popup popup_mesto_name">
+    <div class="popup__container">
+    <h2 class="popup__title">Новое место</h2>
+    <form class="form form_create" action="#" method="get" name="forma">
+      <input type="text" placeholder="Название" class="form__name form__name_photo_title" name="name">
+      <input type="text" placeholder="Ссылка на картинку" class="form__name form__name_photo_src" name="job">
+      <button class="form__save" type="submit">Создать</button>
+    </form>
+    <button type="button" class="popup__close popup__close_theme_mesto"></button>
+  </div>
+</div>
     <script src="scripts/index.js"></script>
 </body>
 </html>
