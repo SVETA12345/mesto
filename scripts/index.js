@@ -12,8 +12,8 @@ const popupMesto=document.querySelector('.popup_mesto_name')
 const mestoBtnOpen=document.querySelector('.profile__add')
 const mestoclose=document.querySelector('.popup__close_theme_mesto')
 const template=document.querySelector('.template');
-let photoInput=document.querySelector('.form__name_photo_title');
-let srcInput=document.querySelector('.form__name_photo_src');
+let photoInput=document.querySelector('.form__name_mesto_title');
+let srcInput=document.querySelector('.form__name_mesto_src');
 let formCreate=document.querySelector('.form_create')
 const items = [
     {
@@ -106,6 +106,14 @@ function CreateCard(item){
     card.querySelector('.place__close').addEventListener('click',() => {
         card_2.remove();
     })
+    card.querySelector('.place__photo').addEventListener('click',()=>{
+        popupPhoto=document.querySelector('.popup__photo');
+        popupPhoto.src=item.link
+        popupCardPhoto=document.querySelector('.popup_card_photo')
+        popupCardPhoto.classList.add('popup_opened')
+        popupCardPhoto.querySelector('.popup__subtitle').textContent=item.name;
+    }
+    )
     return card
 }
  
