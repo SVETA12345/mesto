@@ -1,4 +1,4 @@
-.popup_card_container{
+.popup__card{
     flex-direction: column;
     position: relative;
 }
