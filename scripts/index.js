@@ -112,6 +112,10 @@ function CreateCard(item){
         popupCardPhoto=document.querySelector('.popup_card_photo')
         popupCardPhoto.classList.add('popup_opened')
         popupCardPhoto.querySelector('.popup__subtitle').textContent=item.name;
+        popupCardClose=document.querySelector('.popup__close_card_photo');
+        popupCardClose.addEventListener('click',()=>{
+            popupCardPhoto.classList.remove('popup_opened');    
+        })
     }
     )
     return card
