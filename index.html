@@ -8,6 +8,7 @@
   </head>
 <body class="page">
     <header class="header">
+      <link rel="shortcut icon" href="#" />
         <div class="logo"></div>
     </header>
     <main>
@@ -43,10 +44,12 @@
     <div class="popup popup_type_profile">
       <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form form_profile_name" action="#" method="get" name="forma">
-        <input type="text" placeholder="Название" class="form__name form__name_theme_first" name="name">
-        <input type="text" placeholder="Название" class="form__name form__name_theme_job" name="job">
-        <button class="form__save form__save_theme_profile" type="submit">Сохранить</button>
+      <form class="form form_profile_name popup__form"  name="forma" novalidate>
+        <input type="text" placeholder="Название" class="form__name form__name_theme_first popup__input" name="name" required minlength=2 maxlength=40 id="name-input">
+        <span class="name-input-error form__item-error_field_name"></span>
+        <input type="text" placeholder="Название" class="form__name form__name_theme_job popup__input" name="job" required minlength=2 maxlength=200 id="job-input">
+        <span class="job-input-error form__item-error_field_name"></span>
+        <button class="form__save form__save_theme_profile popup__button" type="submit">Сохранить</button>
       </form>
       <button type="button" class="popup__close"></button>
     </div>
@@ -54,10 +57,12 @@
   <div class="popup popup_type_card ">
     <div class="popup__container">
     <h2 class="popup__title">Новое место</h2>
-    <form class="form form_create" action="#" method="get" name="forma">
-      <input type="text" placeholder="Название" class="form__name form__name_mesto_title" name="name">
-      <input type="text" placeholder="Ссылка на картинку" class="form__name form__name_mesto_src" name="job">
-      <button class="form__save" type="submit">Создать</button>
+    <form class="form form_create popup__form" name="forma" novalidate>
+      <input type="text" placeholder="Название" class="form__name form__name_mesto_title popup__input" name="name" required minlength=2 maxlength=30 id="mesto-name">
+      <span class="mesto-name-error form__item-error_field_name"></span>
+      <input type="url" placeholder="Ссылка на картинку" class="form__name form__name_mesto_src popup__input" name="job" id="mesto-url" required >
+      <span class="mesto-url-error form__item-error_field_name"></span>
+      <button class="form__save popup__button" type="submit">Создать</button>
     </form>
     <button type="button" class="popup__close popup__close_theme_mesto"></button>
   </div>
@@ -69,6 +74,7 @@
   <button type="button" class="popup__close popup__close_card_photo"></button>
 </div>
 </div>
-    <script src="scripts/index.js"></script>
+    <script defer src="scripts/validate.js"></script>
+    <script defer src="scripts/index.js"></script>
 </body>
 </html>

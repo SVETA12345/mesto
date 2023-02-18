@@ -45,22 +45,35 @@ const initialCards = [
 ];
 
 function handleProfileFormSubmit(evt) {
+  name.textContent=nameInput.value
+  job.textContent=jobInput.value
   closePopup(popupProfile);
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  name.textContent = nameInput.value;
-  job.textContent = jobInput.value;
+}
+function closePopupEsc(evt) {
+  console.log(evt.key)
+  if (evt.key === 'Escape') {
+    
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+}
+function closePopupOverlay(modal){
+  modal.addEventListener("click", function (evt) {
+    if (evt.target===evt.currentTarget){
+    closePopup(modal)};
+  });
 }
 
 function openPopup(modal) {
   modal.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupEsc)
 }
 
 function closePopup(modal) {
   modal.classList.remove("popup_opened");
 }
-function handleFormSubmitMesto(evt) {
+function handleFormSubmitMesto(evt) { 
   closePopup(popupMesto);
-  evt.preventDefault();
   const card = createCard({ link: srcInput.value, name: photoInput.value });
   cardsContainer.prepend(card);
   evt.target.reset();
@@ -94,6 +107,16 @@ function createCard(cardData) {
   return card;
 }
 
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});  
+
+
 popupCardClose.addEventListener("click", () => {
   closePopup(popupCardPhoto);
 });
@@ -102,7 +125,7 @@ btnOpenEditProfile.addEventListener("click", function () {
   jobInput.value = job.textContent;
   openPopup(popupProfile);
 });
-formElementProfile.addEventListener("submit", handleProfileFormSubmit);
+
 closeProfile.addEventListener("click", function () {
   closePopup(popupProfile);
 });
@@ -114,4 +137,6 @@ mestoClose.addEventListener("click", function () {
 });
 renderCards(initialCards);
 formCreate.addEventListener("submit", handleFormSubmitMesto);
-
+popupProfile.addEventListener("submit", handleProfileFormSubmit);
+closePopupOverlay(popupProfile)
+closePopupOverlay(popupMesto)
