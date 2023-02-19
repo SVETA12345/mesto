@@ -4,6 +4,7 @@
     background-color: white;
     border-radius: 10px;
     position: relative;
+    cursor: default;
 }
 
 @media (max-width: 767px){

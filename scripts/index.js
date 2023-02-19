@@ -101,6 +101,7 @@ function createCard(cardData) {
     popupPhoto.src = cardData.link;
     popupPhoto.alt = cardData.name;
     openPopup(popupCardPhoto);
+    closePopupOverlay(popupCardPhoto)
     popupCardPhoto.querySelector(".popup__subtitle").textContent =
       cardData.name;
   });
