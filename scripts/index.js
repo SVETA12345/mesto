@@ -17,32 +17,7 @@ const formCreate = document.querySelector(".form_create");
 const popupCardPhoto = document.querySelector(".popup_type_image");
 const popupCardClose = document.querySelector(".popup__close_card_photo");
 const popupPhoto = document.querySelector(".popup__photo");
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+
 
 function handleProfileFormSubmit(evt) {
   name.textContent=nameInput.value
@@ -57,11 +32,10 @@ function closePopupEsc(evt) {
     closePopup(popup);
   }
 }
-function closePopupOverlay(modal){
-  modal.addEventListener("click", function (evt) {
+
+function closePopupOverlay(evt,modal){
     if (evt.target===evt.currentTarget){
     closePopup(modal)};
-  });
 }
 
 function openPopup(modal) {
@@ -70,13 +44,14 @@ function openPopup(modal) {
 }
 
 function closePopup(modal) {
+  document.removeEventListener('keydown', closePopupEsc);
   modal.classList.remove("popup_opened");
 }
 function handleFormSubmitMesto(evt) { 
-  closePopup(popupMesto);
   const card = createCard({ link: srcInput.value, name: photoInput.value });
   cardsContainer.prepend(card);
   evt.target.reset();
+  closePopup(popupMesto);
 }
 
 function renderCards(cardDataList) {
@@ -86,11 +61,12 @@ function renderCards(cardDataList) {
   cardsContainer.append(...cards);
 }
 function createCard(cardData) {
-  const card = cardTemplate.content.cloneNode(true).querySelector(".place");
+  const card = cardTemplate.content.querySelector(".place").cloneNode(true);
   const cardPhoto = card.querySelector(".place__photo");
+  const cardTitle= card.querySelector(".place__title");
   cardPhoto.src = cardData.link;
   cardPhoto.alt = cardData.name;
-  card.querySelector(".place__title").textContent = cardData.name;
+  cardTitle.textContent = cardData.name;
   card.querySelector(".place__like").addEventListener("click", function (evt) {
     evt.target.classList.toggle("place__like_active");
   });
@@ -101,21 +77,13 @@ function createCard(cardData) {
     popupPhoto.src = cardData.link;
     popupPhoto.alt = cardData.name;
     openPopup(popupCardPhoto);
-    closePopupOverlay(popupCardPhoto)
     popupCardPhoto.querySelector(".popup__subtitle").textContent =
       cardData.name;
   });
   return card;
 }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});  
+enableValidation(formsConfig);  
 
 
 popupCardClose.addEventListener("click", () => {
@@ -131,6 +99,9 @@ closeProfile.addEventListener("click", function () {
   closePopup(popupProfile);
 });
 mestoBtnOpen.addEventListener("click", () => {
+  if (srcInput.value==='' && photoInput.value===''){
+    showBtnError(popupMesto,formsConfig)
+  }
   openPopup(popupMesto);
 });
 mestoClose.addEventListener("click", function () {
@@ -139,5 +110,13 @@ mestoClose.addEventListener("click", function () {
 renderCards(initialCards);
 formCreate.addEventListener("submit", handleFormSubmitMesto);
 popupProfile.addEventListener("submit", handleProfileFormSubmit);
-closePopupOverlay(popupProfile)
-closePopupOverlay(popupMesto)
+popupProfile.addEventListener('click', function(evt){
+  closePopupOverlay(evt,popupProfile)
+});
+popupMesto.addEventListener('click', function(evt){
+  closePopupOverlay(evt,popupMesto)
+});
+
+popupCardPhoto.addEventListener('click', function(evt){
+  closePopupOverlay(evt,popupCardPhoto)
+});

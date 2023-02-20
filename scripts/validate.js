@@ -14,25 +14,30 @@ function enableValidation(formsConfig) {
         evt.preventDefault();
       })
       setEventListeners(formElement,formsConfig);
-      
     }) 
   }
 
   function showInputError(formElement, inputElement, errorMessage,formsConfig){
     const errorElement = document.querySelector(`.${inputElement.id}-error`);
-    const btnSaveElement=formElement.querySelector(formsConfig.submitButtonSelector)
-    btnSaveElement.classList.add(formsConfig.inactiveButtonClass);
-    btnSaveElement.setAttribute('disabled','disabled');
     inputElement.classList.add(formsConfig.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(formsConfig.errorClass);
   };
-  
-  function hideInputError(formElement, inputElement, errorMessage,formsConfig){
-    const errorElement = document.querySelector(`.${inputElement.id}-error`);
+
+  function showBtnError(formElement,formsConfig){
+    const btnSaveElement=formElement.querySelector(formsConfig.submitButtonSelector)
+    btnSaveElement.classList.add(formsConfig.inactiveButtonClass);
+    btnSaveElement.setAttribute('disabled','disabled');
+  }
+
+  function hideBtnError(formElement,formsConfig){
     const btnSaveElement=formElement.querySelector(formsConfig.submitButtonSelector)
     btnSaveElement.classList.remove(formsConfig.inactiveButtonClass);
     btnSaveElement.removeAttribute('disabled');
+  }
+  
+  function hideInputError(inputElement,formsConfig){
+    const errorElement = document.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(formsConfig.inputErrorClass);
     errorElement.textContent = '';
     errorElement.classList.remove(formsConfig.errorClass);
@@ -40,7 +45,9 @@ function enableValidation(formsConfig) {
   
   function inputValid(formElement, inputElement,formsConfig){
     if (!inputElement.validity.valid){
-      showInputError(formElement, inputElement, inputElement.validationMessage,formsConfig)
+      showInputError(formElement, inputElement, inputElement.validationMessage,formsConfig);
+      showBtnError(formElement,formsConfig);
     }
-    else {hideInputError(formElement, inputElement, inputElement.validationMessage,formsConfig)}
+    else {hideInputError(inputElement,formsConfig);
+      hideBtnError(formElement,formsConfig)};
   }
