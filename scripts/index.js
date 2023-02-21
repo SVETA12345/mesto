@@ -50,8 +50,8 @@ function closePopup(modal) {
 function handleFormSubmitMesto(evt) { 
   const card = createCard({ link: srcInput.value, name: photoInput.value });
   cardsContainer.prepend(card);
-  evt.target.reset();
   closePopup(popupMesto);
+  evt.target.reset();
 }
 
 function renderCards(cardDataList) {
@@ -74,11 +74,12 @@ function createCard(cardData) {
     card.remove();
   });
   cardPhoto.addEventListener("click", () => {
+    const popupPhotoSubtitle=popupCardPhoto.querySelector(".popup__subtitle");
     popupPhoto.src = cardData.link;
     popupPhoto.alt = cardData.name;
-    openPopup(popupCardPhoto);
-    popupCardPhoto.querySelector(".popup__subtitle").textContent =
+    popupPhotoSubtitle.textContent =
       cardData.name;
+    openPopup(popupCardPhoto);
   });
   return card;
 }
