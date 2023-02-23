@@ -17,7 +17,7 @@ const formCreate = document.querySelector(".form_create");
 const popupCardPhoto = document.querySelector(".popup_type_image");
 const popupCardClose = document.querySelector(".popup__close_card_photo");
 const popupPhoto = document.querySelector(".popup__photo");
-
+const popupPhotoSubtitle=popupCardPhoto.querySelector(".popup__subtitle");
 
 function handleProfileFormSubmit(evt) {
   name.textContent=nameInput.value
@@ -74,7 +74,6 @@ function createCard(cardData) {
     card.remove();
   });
   cardPhoto.addEventListener("click", () => {
-    const popupPhotoSubtitle=popupCardPhoto.querySelector(".popup__subtitle");
     popupPhoto.src = cardData.link;
     popupPhoto.alt = cardData.name;
     popupPhotoSubtitle.textContent =
