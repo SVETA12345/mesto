@@ -64,9 +64,7 @@ function handleFormSubmitMesto(evt) {
 
 
 
-popupCardClose.addEventListener("click", () => {
-  closePopup(popupCardPhoto);
-});
+
 btnOpenEditProfile.addEventListener("click", function () {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;

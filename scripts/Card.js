@@ -3,6 +3,7 @@ export class Card {
       this._templateSelector = templateSelector;
       this._name=data.name
       this._image=data.link
+      this._popupPhoto=document.querySelector(".popup__photo")
     }
     _getTemplate(){
       const cardElement=document.querySelector(this._templateSelector).content.querySelector(".place").cloneNode(true);
@@ -17,17 +18,28 @@ export class Card {
       return this._element;
     }
     _handleOpenPopup(){
-      popupPhoto.src = this._image;
-      popupPhoto.alt = this._name;
-      popupPhotoSubtitle.textContent =this._name;
-      openPopup(popupCardPhoto)
+        this._popupPhoto.src = this._image;
+        this._popupPhoto.alt = this._name;
+        document.querySelector(".popup__subtitle").textContent =this._name;
+        document.querySelector(".popup_type_image").classList.add("popup_opened");
+        document.removeEventListener('keydown', (evt)=>{
+            if (evt.key === 'Escape') {       
+                const popup = document.querySelector('.popup_opened');
+                popup.classList.remove("popup_opened");
+              }
+            }
+            );
+    }
+    _handleClosePopup(){
+
+        document.querySelector(".popup_type_image").classList.remove("popup_opened");
     }
     _setEventListeners() {
       this._element.querySelector(".place__photo").addEventListener('click', () => {
         this._handleOpenPopup();
       });
       document.querySelector(".popup__close_card_photo").addEventListener("click", () => {
-        closePopup(popupCardPhoto);
+        this._handleClosePopup();
       });
       this._element.querySelector(".place__like").addEventListener("click",  (evt)=> {
         evt.target.classList.toggle("place__like_active");
