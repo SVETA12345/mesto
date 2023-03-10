@@ -4,7 +4,7 @@ export class FormValidator{
       this._formElement=formElement
     }
     _inputValid(inputElement){
-      if ((!inputElement.validity.valid) || (srcInput.value==='' && photoInput.value==='')){
+      if (!inputElement.validity.valid){
         
         this._showInputError(inputElement, inputElement.validationMessage);
         this._showBtnError();

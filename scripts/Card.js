@@ -22,16 +22,8 @@ export class Card {
         this._popupPhoto.alt = this._name;
         document.querySelector(".popup__subtitle").textContent =this._name;
         document.querySelector(".popup_type_image").classList.add("popup_opened");
-        document.removeEventListener('keydown', (evt)=>{
-            if (evt.key === 'Escape') {       
-                const popup = document.querySelector('.popup_opened');
-                popup.classList.remove("popup_opened");
-              }
-            }
-            );
     }
     _handleClosePopup(){
-
         document.querySelector(".popup_type_image").classList.remove("popup_opened");
     }
     _setEventListeners() {
@@ -47,5 +39,11 @@ export class Card {
       this._element.querySelector(".place__close").addEventListener("click", () => {
         this._element.remove();
       });
+      document.removeEventListener('keydown', (evt)=>{
+        if (evt.key === 'Escape') {       
+            this._popup = document.querySelector('.popup_opened');
+            this._popup.classList.remove("popup_opened");
+          }
+        });
     }
   }

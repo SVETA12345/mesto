@@ -43,11 +43,9 @@ function closePopupOverlay(evt,modal){
 
 function openPopup(modal) {
   modal.classList.add("popup_opened");
-  document.addEventListener('keydown', closePopupEsc)
 }
 
 function closePopup(modal) {
-  document.removeEventListener('keydown', closePopupEsc);
   modal.classList.remove("popup_opened");
 }
 function handleFormSubmitMesto(evt) { 
@@ -91,10 +89,13 @@ popupCardPhoto.addEventListener('click', function(evt){
   closePopupOverlay(evt,popupCardPhoto)
 });
 
+document.addEventListener('keydown', function(evt){
+  closePopupEsc(evt,popupCardPhoto)
+});
 initialCards.forEach((item) => {
   const card = new Card(item, '.template');
   const cardElement = card.generateCard();
-
+  
   // Добавляем в DOM
   cardsContainer.append(cardElement);
 });
