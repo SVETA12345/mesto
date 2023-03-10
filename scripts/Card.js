@@ -39,11 +39,5 @@ export class Card {
       this._element.querySelector(".place__close").addEventListener("click", () => {
         this._element.remove();
       });
-      document.removeEventListener('keydown', (evt)=>{
-        if (evt.key === 'Escape') {       
-            this._popup = document.querySelector('.popup_opened');
-            this._popup.classList.remove("popup_opened");
-          }
-        });
     }
   }
