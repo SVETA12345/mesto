@@ -21,6 +21,8 @@ const formCreate = document.querySelector(".form_create");
 const popupCardPhoto = document.querySelector(".popup_type_image");
 const popupCardClose = document.querySelector(".popup__close_card_photo");
 const popups = document.querySelectorAll('.popup')
+const validMesto = new FormValidator(formsConfig, popupMesto);
+const validProfile = new FormValidator(formsConfig, popupProfile);
 
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
@@ -34,6 +36,7 @@ popups.forEach((popup) => {
 })
 
 function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
   name.textContent = nameInput.value;
   job.textContent = jobInput.value;
   closePopup(popupProfile);
@@ -42,6 +45,7 @@ function handleProfileFormSubmit(evt) {
 
 
 function handleFormSubmitMesto(evt) {
+  evt.preventDefault();
   const cardElement = createCard({
     link: srcInput.value,
     name: photoInput.value,
@@ -52,11 +56,7 @@ function handleFormSubmitMesto(evt) {
 
   closePopup(popupMesto);
   evt.target.reset();
-}
-
-function initialStatePopup(formElement) {
-  const valid = new FormValidator(formsConfig, formElement);
-  valid.resetValidation();
+  validMesto.resetValidation();
 }
 
 function createCard(item) {
@@ -69,7 +69,7 @@ btnOpenEditProfile.addEventListener("click", function () {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
   openPopup(popupProfile);
-  initialStatePopup(popupProfile);
+  validProfile.resetValidation();
 });
 
 
@@ -86,19 +86,9 @@ initialCards.forEach((item) => {
   cardsContainer.append(cardElement);
 });
 
-const allForm = Array.from(document.querySelectorAll(formsConfig.formSelector));
-
-popupMesto.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-});
-const validMesto = new FormValidator(formsConfig, popupMesto);
 validMesto.enableValidation();
-popupProfile.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-});
-const validProfile = new FormValidator(formsConfig, popupProfile);
+
 validProfile.enableValidation();
 mestoBtnOpen.addEventListener("click", () => {
-  openPopup(popupMesto);
-  initialStatePopup(popupMesto);
+  openPopup(popupMesto); 
 });

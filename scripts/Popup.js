@@ -11,8 +11,8 @@ export function openPopup(modal) {
 
 function closePopupEsc(evt) {
     console.log(evt.key)
-    const popup = document.querySelector('.popup_opened')
-    if (evt.key === 'Escape') {     
+    if (evt.key === 'Escape') {  
+        const popup = document.querySelector('.popup_opened')   
       closePopup(popup);
     }
   }

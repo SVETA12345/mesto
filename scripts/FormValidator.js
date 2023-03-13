@@ -15,7 +15,6 @@ export class FormValidator {
       this._disableButton();
     } else {
       this._hideInputError(inputElement);
-      this._enableButton();
     }
   }
   enableValidation() {
@@ -25,6 +24,12 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._inputValid(inputElement);
+        const formIsValid = this._inputList.every(
+          ({ validity }) => validity.valid
+        );
+        if (formIsValid) {
+          this._enableButton();
+        }
       });
     });
   }
