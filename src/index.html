@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
 <body class="page">
     <header class="header">
@@ -14,7 +13,7 @@
     <main>
       <section class="profile">
         <div class="profile__info">
-        <img alt="автарка" src="./images/avatar.png" class="profile__image">
+        <img alt="автарка" class="profile__image" src=<%=require('./images/avatar.png')%> />
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__second-name">Исследователь океана</p>
@@ -76,10 +75,6 @@
   <button type="button" class="popup__close popup__close_card_photo"></button>
 </div>
 </div>
-    <script type="module" defer src="./scripts/Popup.js"></script>
-    <script type="module" defer src="./scripts/Card.js"></script>
-    <script type="module" defer src="./scripts/FormValidator.js"></script>  
-    <script type="module" defer src="scripts/data.js"></script>
-    <script defer src="scripts/index.js" type="module"></script>
+ 
 </body>
 </html>

@@ -1,12 +1,13 @@
-import { openPopup } from "./Popup.js";
+
 const popupPhoto = document.querySelector(".popup__photo");
 const popupPhotoSubtitle = document.querySelector(".popup__subtitle");
 const popupCardPhoto = document.querySelector(".popup_type_image");
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector,handleCardClick) {
     this._templateSelector = templateSelector;
     this._name = data.name;
     this._image = data.link;
+    this._handleCardClick=handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -24,16 +25,11 @@ export class Card {
     this._element.querySelector(".place__title").textContent = this._name;
     return this._element;
   }
-  _handleOpenPopup() {
-    popupPhoto.src = this._image;
-    popupPhoto.alt = this._name;
-    popupPhotoSubtitle.textContent = this._name;
-    openPopup(popupCardPhoto);
-  }
+  
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
-      this._handleOpenPopup();
+      this._handleCardClick();
     });
     this._element
       .querySelector(".place__like")
