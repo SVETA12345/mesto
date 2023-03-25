@@ -1,13 +1,9 @@
-
-const popupPhoto = document.querySelector(".popup__photo");
-const popupPhotoSubtitle = document.querySelector(".popup__subtitle");
-const popupCardPhoto = document.querySelector(".popup_type_image");
 export class Card {
-  constructor(data, templateSelector,handleCardClick) {
+  constructor(data, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector;
     this._name = data.name;
     this._image = data.link;
-    this._handleCardClick=handleCardClick;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
@@ -25,7 +21,12 @@ export class Card {
     this._element.querySelector(".place__title").textContent = this._name;
     return this._element;
   }
-  
+  _toggleLike(evt) {
+    evt.target.classList.toggle("place__like_active");
+  }
+  _deleteCard() {
+    this._element.remove();
+  }
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
@@ -34,12 +35,12 @@ export class Card {
     this._element
       .querySelector(".place__like")
       .addEventListener("click", (evt) => {
-        evt.target.classList.toggle("place__like_active");
+        this._toggleLike(evt)
       });
     this._element
       .querySelector(".place__close")
       .addEventListener("click", () => {
-        this._element.remove();
+        this._deleteCard();
       });
   }
 }
