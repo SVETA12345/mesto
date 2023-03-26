@@ -41,7 +41,7 @@ defaultCardList.renderItems();
 
 
 
-const userProfile=new UserInfo({name:'.form__name_theme_first',info:'.form__name_theme_job'})
+const userProfile=new UserInfo({selectorName:'.profile__name',selectorJob:'.profile__second-name'})
 
 const formProfile=new PopupWithForm('.popup_type_profile',{
   handleFormSubmit: (item)=>userProfile.setUserInfo(item) 
