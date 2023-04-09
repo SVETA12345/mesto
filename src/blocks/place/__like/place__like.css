@@ -7,6 +7,9 @@
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    position: absolute;
+    bottom:38px;
+    right: 20px;
 }
 
 .place__like:hover{

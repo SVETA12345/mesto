@@ -1,4 +1,4 @@
-
+import { Api } from "./Api";
 export class UserInfo{
     constructor({selectorName,selectorJob}){
 
@@ -8,8 +8,9 @@ export class UserInfo{
     getUserInfo(){
         return{name:this._nameProfile.textContent,job:this._jobProfile.textContent}
     }
-    setUserInfo(item){
-        
+    setUserInfo(item,api){
+        console.log(api.sendDataProfile(item.name,item.job))
+        api.sendDataProfile(item.name,item.job)
         this._nameProfile.textContent = item.name;
         this._jobProfile.textContent = item.job;
     }

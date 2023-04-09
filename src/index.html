@@ -13,10 +13,15 @@
     <main>
       <section class="profile">
         <div class="profile__info">
-        <img alt="автарка" class="profile__image" src=<%=require('./images/avatar.png')%> />
+        <button class="profile__background avatar_open_popup" id="button_avatar">
+          <div class="profile__button">
+            
+          <img alt="автарка" class="profile__image" src=<%=require('./images/karandash.svg')%> />
+          </div>
+        </button>
         <div class="profile__text">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__second-name">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__second-name"></p>
       </div>
       <button class="profile__edit" type="button"></button>
     </div>
@@ -24,7 +29,19 @@
       </section>
       <section class="places">
 
-        <template class="template">
+        <template class="template template_user">
+          <div class="place">
+            <div class="place__info">
+            <img class="place__photo">
+          </div>
+          <div class="place__footer">
+            <h2 class="place__title"></h2>
+            <button type="button" class="place__like"></button>
+            <p class ='place__subtitle'>0</p>
+          </div>
+          </div>
+        </template> 
+        <template class="template template_my_card">
           <div class="place">
             <div class="place__info">
             <img class="place__photo">
@@ -33,9 +50,10 @@
           <div class="place__footer">
             <h2 class="place__title"></h2>
             <button type="button" class="place__like"></button>
+            <p class ='place__subtitle'>0</p>
           </div>
           </div>
-        </template>   
+        </template>    
 
       </section>
     </main>
@@ -75,6 +93,23 @@
   <button type="button" class="popup__close popup__close_card_photo"></button>
 </div>
 </div>
- 
+<div class="popup popup_type_close">
+  <div class="popup__container-close">
+    <h2 class="popup__title">Вы уверены?</h2>
+    <button class="form__save popup__button popup__close_theme_card" type="submit">Да</button>
+    <button type="button" class="popup__close"></button>
+  </div>
+</div>
+<div class="popup popup_type_avatar">
+  <div class="popup__container-avatar">
+  <h2 class="popup__title">Обновить аватар</h2>
+  <form class="form form_create popup__form" name="forma" novalidate>
+    <input type="url" placeholder="Ссылка на картинку" class="form__name form__name_avatar_src popup__input" name="link" id="avatar-url" required >
+    <span class="avatar-url-error form__item-error form__item-error_field_name"></span>
+    <button class="form__save popup__button" type="submit">Сохранить</button>
+  </form>
+  <button type="button" class="popup__close popup__close_theme_avatar"></button>
+</div>
+</div>
 </body>
 </html>
