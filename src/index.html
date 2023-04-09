@@ -13,7 +13,7 @@
     <main>
       <section class="profile">
         <div class="profile__info">
-        <button class="profile__background avatar_open_popup" id="button_avatar">
+        <button class="profile__background avatar__open" id="button_avatar">
           <div class="profile__button">
             
           <img alt="автарка" class="profile__image" src=<%=require('./images/karandash.svg')%> />
@@ -96,8 +96,10 @@
 <div class="popup popup_type_close">
   <div class="popup__container-close">
     <h2 class="popup__title">Вы уверены?</h2>
-    <button class="form__save popup__button popup__close_theme_card" type="submit">Да</button>
+    <form class="form">
+    <button class="form__save popup__button popup__button_theme_card" type="submit">Да</button>
     <button type="button" class="popup__close"></button>
+  </form>>
   </div>
 </div>
 <div class="popup popup_type_avatar">

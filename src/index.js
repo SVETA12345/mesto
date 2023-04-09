@@ -12,7 +12,7 @@ import {PopupWithDeleteCard} from './scripts/PopupWithDeleteCard.js'
 
 const buttonAvatar=document.getElementById("button_avatar")
 const popupAvatar=document.querySelector('.popup_type_avatar')
-const avatarBtnOpen=document.querySelector('.avatar_open_popup')
+const avatarBtnOpen=document.querySelector('.avatar__open')
 const btnYes=document.querySelector('.popup__close_theme_card')
 const cardClose=document.querySelector('.place__close')
 const popupMesto = document.querySelector(".popup_type_card");
@@ -30,7 +30,7 @@ const validAvatar= new FormValidator(formsConfig, popupAvatar);
 const validMesto = new FormValidator(formsConfig, popupMesto);
 const validProfile = new FormValidator(formsConfig, popupProfile);
 const closePopup= new Popup(".popup_type_close");
-const cardPopupDelete= new PopupWithDeleteCard({btnYes:'.popup__close_theme_card', popupSelector:'.popup_type_close',apiDeleteMyCard});
+const cardPopupDelete= new PopupWithDeleteCard({btnYes:'.popup__button_theme_card', popupSelector:'.popup_type_close',apiDeleteMyCard});
 const api = new Api({
   url:'https://mesto.nomoreparties.co/v1/cohort-63/cards',
   headers:{ 
@@ -108,7 +108,7 @@ tasks.then((data) =>{
   );
   defaultCardList.renderItems()
   
-  })
+  }).catch((err)=>console.log(err))
 
 
 
