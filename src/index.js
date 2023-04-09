@@ -12,7 +12,7 @@ import {PopupWithDeleteCard} from './scripts/PopupWithDeleteCard.js'
 
 const buttonAvatar=document.getElementById("button_avatar")
 const popupAvatar=document.querySelector('.popup_type_avatar')
-const avatarBtnOpen=document.querySelector('.avatar__open')
+const avatarBtnOpen=document.querySelector('.profile__open-avatar')
 const btnYes=document.querySelector('.popup__close_theme_card')
 const cardClose=document.querySelector('.place__close')
 const popupMesto = document.querySelector(".popup_type_card");
