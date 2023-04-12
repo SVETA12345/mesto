@@ -6,8 +6,8 @@ module.exports = {
   performance: {
     hints: false
 },
-    devtool: 'inline-source-map',
-  entry: { main: "./src/index.js" },
+    devtool: 'source-map',
+  entry: { main: "./src/pages/index.js" },
   output: {
     path: path.resolve(__dirname,'dist'),
     filename: "main.js",
@@ -41,7 +41,7 @@ module.exports = {
         // MiniCssExtractPlugin.loader и css-loader
         use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader'
-        }]
+        },'postcss-loader',]
       },
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями

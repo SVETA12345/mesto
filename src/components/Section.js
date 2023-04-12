@@ -4,12 +4,17 @@ export class Section {
         this._renderer=renderer;
         this._container=document.querySelector(containerSelector)
     }
-    renderItems(){
-        this._renderedItems.reverse().forEach((item)=>{
-            this._renderer(item);
+    renderItems(cards,myId){
+        cards.forEach((item)=>{
+            const cardElement=this._renderer(item,myId);
+            this.addItems(cardElement)
         })
     }
     setItem(element){
         this._container.prepend(element)
     }
+    addItems(items) {
+        this._container.append(items);
+    
+    } 
 }
