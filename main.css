@@ -945,7 +945,9 @@ line-height: 16px;
     position: relative;
     cursor: default;
 }
-
+.place__close_hidden{
+    display: none;
+}
 
 
 
