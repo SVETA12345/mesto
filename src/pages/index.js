@@ -156,8 +156,8 @@ const createCard = (cardData,myId) => {
         }).catch((err)=>console.log(err))
      })
       
-    },
-  });
+    }
+  },".template_my_card");
   return card.generateCard();
 }
 //closePopup(popupCardPhoto);

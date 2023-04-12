@@ -6,19 +6,19 @@ export class Card {
     handleCardClick,
     handleLikeClick,
     handleDeleteIconClick,
-  }) {
+  },cardSelector) {
 
     this._data = data;
     this._currentUserId = data.currentUserId;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteIconClick=handleDeleteIconClick;
+    this._templateSelector = cardSelector;
   }
   likeClick(action) {
     this._handleLikeClick = action;
   }
   _getTemplate() {
-    this._templateSelector = ".template_my_card";
       
     const cardElement = document
       .querySelector(this._templateSelector)
