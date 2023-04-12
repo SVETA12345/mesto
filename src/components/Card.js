@@ -18,11 +18,8 @@ export class Card {
     this._handleLikeClick = action;
   }
   _getTemplate() {
-    if (this._data.owner._id == this._currentUserId) {
-      this._templateSelector = ".template_my_card";
-    } else {
-      this._templateSelector = ".template_user";
-    }
+    this._templateSelector = ".template_my_card";
+      
     const cardElement = document
       .querySelector(this._templateSelector)
       .content.querySelector(".place")
@@ -38,6 +35,8 @@ export class Card {
     this._element.querySelector(".place__title").textContent = this._data.name;
     this._element.querySelector(".place__subtitle").textContent =
       this._data.likes.length;
+      this._element.querySelector('.place__close')
+      .classList.add(this._data.owner._id == this._currentUserId ? 'place__close' : 'place__close_hidden');
     this.renderLike(this._element);
     return this._element;
   }
@@ -84,8 +83,8 @@ export class Card {
         this._handleLikeClick();
       });
       if (this._data.owner._id == this._currentUserId){
-        this._element.querySelector('.place__close').addEventListener('click',(evt)=>{      
-          this._handleDeleteIconClick(evt)
+        this._element.querySelector('.place__close').addEventListener('click',()=>{      
+          this._handleDeleteIconClick()
         })
       }
     //return countLikes;

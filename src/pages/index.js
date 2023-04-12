@@ -51,8 +51,9 @@ userProfile.addAvatarUserInfo(res)
 function dataUser(item){
   api.sendDataProfile(item.name,item.about).then((data)=>{
     userProfile.setUserInfo(data)
+    formProfile.closePopup()
   }
-  )
+  ).catch((err)=>console.log(err))
 }
 const defaultCardList = new Section(
   {renderer},
@@ -78,6 +79,7 @@ function rendererCardPopup(item) {
   apiCard.then((data)=>{
     const cardElement = createCard(data,data.owner._id);
     defaultCardList.setItem(cardElement)
+    formMesto.closePopup()
     //cardClose.addEventListener('click',()=>{cardPopupDelete.open(data,cardElement) })        
 }).catch((err)=>console.log(err))
 .finally(formMesto.setBtnText('Создать'))
@@ -94,8 +96,8 @@ function imageUser(item){
   const apiUser=api.avatarProfile(item.link)
   console.log('apiuser',apiUser)
   apiUser.then((item)=>{
-    buttonAvatar.style.backgroundImage = `url(${item.avatar})`;
-    buttonAvatar.style.backgroundRepeat = "no-repeat"
+    formAvatar.addAvatarUserInfo(item)
+    formAvatar.closePopup()
   }).catch((err)=>console.log(err))
   .finally(formAvatar.setBtnText('Сохранить'))
 }
@@ -114,7 +116,14 @@ function openProfile(){
   validProfile.resetValidation();
 }
 
-
+function openMesto(){
+  validMesto.resetValidation();
+  formMesto.openPopup();
+}
+function openAvatar(){
+  validAvatar.resetValidation();
+  formAvatar.openPopup()
+}
 const popupPhotoOpen = new PopupWithImage(".popup_type_image");
 
 btnOpenEditProfile.addEventListener("click", ()=>{
@@ -146,7 +155,7 @@ const createCard = (cardData,myId) => {
           cardPopupDelete.closePopup()
         }).catch((err)=>console.log(err))
      })
-      cardPopupDelete.setEventListeners()
+      
     },
   });
   return card.generateCard();
@@ -165,12 +174,10 @@ const formAvatar= new PopupWithForm(".popup_type_avatar",{
   handleFormSubmit: (item) => imageUser(item),
 });
 mestoBtnOpen.addEventListener("click", () => {
-  validMesto.resetValidation();
-  formMesto.openPopup();
+  openMesto()
 });
 avatarBtnOpen.addEventListener('click',()=>{
-  validAvatar.resetValidation();
-  formAvatar.openPopup()
+  openAvatar()
 })
 formMesto.setEventListeners()
 validMesto.enableValidation();
@@ -181,5 +188,5 @@ validProfile.enableValidation();
 
 //appendCard(initialCards)
 
-
+cardPopupDelete.setEventListeners()
 popupPhotoOpen.setEventListeners();

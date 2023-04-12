@@ -19,10 +19,6 @@ export class PopupWithForm extends Popup {
     // возвращаем объект значений
     return this._formValues;
   }
-  _close(evt) {
-    super.closePopup();
-    evt.target.reset();
-  }
   setBtnText(text){
     this._popupSaveBtn.textContent=text
   }
@@ -32,7 +28,7 @@ export class PopupWithForm extends Popup {
       // добавим вызов функции _handleFormSubmit
       // передадим ей объект — результат работы _getInputValues
       this._handleFormSubmit(this._getInputValues());
-      this._close(evt);
+      evt.target.reset();
     });
     super.setEventListeners()
   }
