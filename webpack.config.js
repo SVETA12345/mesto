@@ -40,8 +40,9 @@ module.exports = {
         // при обработке этих файлов нужно использовать
         // MiniCssExtractPlugin.loader и css-loader
         use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader'
-        },'postcss-loader',]
+          loader: 'css-loader',
+          
+        },{loader: "postcss-loader"}]
       },
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями

@@ -51,7 +51,7 @@ userProfile.addAvatarUserInfo(res)
 function dataUser(item){
   api.sendDataProfile(item.name,item.about).then((data)=>{
     userProfile.setUserInfo(data)
-    formProfile.closePopup()
+    formProfile.close()
   }
   ).catch((err)=>console.log(err))
 }
@@ -79,7 +79,7 @@ function rendererCardPopup(item) {
   apiCard.then((data)=>{
     const cardElement = createCard(data,data.owner._id);
     defaultCardList.setItem(cardElement)
-    formMesto.closePopup()
+    formMesto.close()
     //cardClose.addEventListener('click',()=>{cardPopupDelete.open(data,cardElement) })        
 }).catch((err)=>console.log(err))
 .finally(formMesto.setBtnText('Создать'))
@@ -96,8 +96,8 @@ function imageUser(item){
   const apiUser=api.avatarProfile(item.link)
   console.log('apiuser',apiUser)
   apiUser.then((item)=>{
-    formAvatar.addAvatarUserInfo(item)
-    formAvatar.closePopup()
+    userProfile.addAvatarUserInfo(item)
+    formAvatar.close()
   }).catch((err)=>console.log(err))
   .finally(formAvatar.setBtnText('Сохранить'))
 }
@@ -109,20 +109,21 @@ function imageUser(item){
 //const formClose= new PopupWithForm(".popup_type_close")
 
 function openProfile(){
+  formProfile.open();
   const infoObject = userProfile.getUserInfo();
   nameInput.value = infoObject.name;
   jobInput.value = infoObject.job;
-  formProfile.openPopup();
+  
   validProfile.resetValidation();
 }
 
 function openMesto(){
   validMesto.resetValidation();
-  formMesto.openPopup();
+  formMesto.open();
 }
 function openAvatar(){
   validAvatar.resetValidation();
-  formAvatar.openPopup()
+  formAvatar.open()
 }
 const popupPhotoOpen = new PopupWithImage(".popup_type_image");
 
